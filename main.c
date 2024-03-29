@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include "grade_card.h"
 
-#define MAX_STUDENTS 4 // Define the maximum number of students
-#define NUM_SUBJECTS 3 // Define the number of subjects
-#define NUM_EXAMS 3    // Define the number of exams
+#define MAX_STUDENTS 10 // Define the maximum number of students
+#define NUM_SUBJECTS 3  // Define the number of subjects
+#define NUM_EXAMS 3     // Define the number of exams
 
 int main() {
-    char names[MAX_STUDENTS][50] = {"Khushi", "Yash", "Eva", "Aarav"};
-    int rollNumbers[MAX_STUDENTS] = {101, 102, 103, 104};
-    long long phoneNumbers[MAX_STUDENTS] = {1234567890, 9876543210, 1357924680, 2468013579};
+    char names[MAX_STUDENTS][50] = {"Khushi", "Yash", "Eva", "Aarav", "Rohan", "Aditya", "Ana de dramas", "Sachin", "Rohit", "Adyanth"};
+    int rollNumbers[MAX_STUDENTS] = {101, 102, 103, 104, 105, 106, 107, 108, 109, 110};
+    long long phoneNumbers[MAX_STUDENTS] = {1234567890, 9876543210, 1357924680, 2468013579, 9876543210, 1357924680, 2468013579, 1234567890, 9876543210, 1357924680};
 
     char subjects[NUM_SUBJECTS][50] = {"DSA", "C++", "ML"};
 
@@ -26,6 +26,11 @@ int main() {
             for (int j = 0; j < NUM_EXAMS; j++) {
                 printf("Enter marks for exam %d: ", j + 1);
                 scanf("%f", &marks[s][i][j]);
+                // Add validation for marks
+                if (marks[s][i][j] < 0 || marks[s][i][j] > 100) {
+                    printf("Invalid marks! Marks should be between 0 and 100.\n");
+                    return 1; // Exit with error
+                }
             }
         }
     }
@@ -44,8 +49,7 @@ int main() {
                 totalMarks += marks[studentIndex][i][j];
             }
             // Calculate total scaled marks and SGPA
-          float totalScaledMarks = (totalMarks / 2) + 10;
-
+            float totalScaledMarks = (totalMarks / 2) + 10;
             float sgpa = calculateSGPA(totalScaledMarks);
             printf(" %-5.2f| %-5.2f|\n", totalScaledMarks, sgpa);
         }
