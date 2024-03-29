@@ -1,5 +1,3 @@
-
-
 #include "grade_card.h"
 #include <stdio.h>
 
