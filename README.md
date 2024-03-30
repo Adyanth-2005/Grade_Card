@@ -1,4 +1,4 @@
-Make sure to create a folder and copy all these files together.
+Make sure to create a folder and copy all these files together.(Header and source files should be at one place)
 
 
 
