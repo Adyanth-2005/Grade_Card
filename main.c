@@ -78,21 +78,24 @@ int main() {
     scanf("%d", &studentIndex);
     if (studentIndex >= 0 && studentIndex < numStudents) {
         printf("\n================ Grade Card for %s ================\n", names[studentIndex]);
-        printf("| %-8s| %-5s| %-5s| %-5s| %-5s| %-5s|\n", "Subject", "ISA1", "ISA2", "ESA", "Total", "SGPA");
+        printf("| %-8s| %-5s| %-5s| %-5s| %-5s|\n", "Subject", "ISA1", "ISA2", "ESA", "Total");
         printf("-------------------------------------------------------\n");
+        float totalMarks = 0;
         for (int i = 0; i < numSubjects; i++) {
             printf("| %-8s|", subjects[i]);
-            float totalMarks = 0;
+            float subjectTotalMarks = 0;
             for (int j = 0; j < NUM_EXAMS; j++) {
                 printf(" %-5.2f|", marks[studentIndex][i][j]);
-                totalMarks += marks[studentIndex][i][j];
+                subjectTotalMarks += marks[studentIndex][i][j];
             }
-            // Calculate total scaled marks and SGPA
-            float totalScaledMarks = (totalMarks / 2) + 10;
-            float sgpa = calculateSGPA(totalScaledMarks);
-            printf(" %-5.2f| %-5.2f|\n", totalScaledMarks, sgpa);
+            totalMarks += (subjectTotalMarks/2 +10);
+            printf(" %-5.2f|\n", (subjectTotalMarks/2 + 10));
         }
         printf("=======================================================\n");
+        // Calculate SGPA
+        float totalScaledMarks = (totalMarks) + 10;
+        float sgpa = calculateSGPA(totalScaledMarks);
+        printf("Total SGPA: %.2f\n", sgpa);
     } else {
         printf("Invalid student index!\n");
     }
