@@ -8,7 +8,7 @@
 int main() {
     int numStudents;
     
-    // User input for numeber of students 
+    // User input for number of students 
     printf("Enter the number of students: ");
     scanf("%d", &numStudents);
     
